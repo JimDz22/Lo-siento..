@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lo siento 💗</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffe6f0, #fff);
+      font-family: 'Segoe UI', sans-serif;
+      color: #444;
+    }
+
+    .inicio {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffe6f0, #fff);
+      z-index: 10;
+    }
+
+    .btn-inicio {
+      background: #ff6b9a;
+      border: none;
+      color: white;
+      padding: 18px 28px;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(255,107,154,0.4);
+      animation: latido 2s infinite;
+    }
+
+    .card {
+      background: #fff0f6;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(255,107,154,0.25);
+      text-align: center;
+      max-width: 420px;
+      animation: aparecer 1.5s ease;
+      z-index: 5;
+      border: 2px solid #ffb3c7;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: #ff6b9a;
+      margin-bottom: 10px;
+      animation: latido 2s infinite;
+    }
+
+    @keyframes latido {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    img {
+      width: 200px;
+      margin: 20px 0;
+    }
+
+    button {
+      background: #ff6b9a;
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .extra {
+      display: none;
+      margin-top: 15px;
+      color: #ff6b9a;
+      font-weight: bold;
+    }
+
+    .firma {
+      margin-top: 20px;
+      font-style: italic;
+      color: #777;
+    }
+
+    .hojas span {
+      position: absolute;
+      top: -10%;
+      font-size: 22px;
+      animation: caer linear infinite;
+      opacity: 0.9;
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    @keyframes caer {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="inicio" id="inicio">
+    <button class="btn-inicio" onclick="entrar()">Para Sammy 🍂</button>
+  </div>
+
+  <div class="hojas"></div>
+
+  <div class="card" style="display:none;">
+    <h1>Perdón…</h1>
+
+    <p>
+      Y gracias por mencionarme eso, la verdad no lo repetiré
+      y no volveré a repetir eso.
+      Te quiero un mundo, SammyRizitos.
+    </p>
+
+    <img src="pochaco llorando.gif" alt="Pochaco llorando">
+
+    <p>
+      La verdad sí quiero ser mejor para ti &lt;3
+      Puedo equivocarme y aprender de eso, y está bien.
+      Cuando veas esto, espero ya estés mejor.
+    </p>
+
+    <button onclick="mostrarMensaje()">¿Me perdonas?</button>
+
+    <div class="extra" id="extraMensaje">Enserio, gracias por darme la oportunidad 💗</div>
+
+    <div class="firma">Con mucho cariño, Jim</div>
+  </div>
+
+  <audio id="musica" loop>
+    <source src="https://raw.githubusercontent.com/fabidz13/Canciones/main/Lana%20Del%20Rey%20-%20Margaret.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function mostrarMensaje() {
+      document.getElementById('extraMensaje').style.display = 'block';
+    }
+
+    function entrar() {
+      document.getElementById('inicio').style.display = 'none';
+      document.querySelector('.card').style.display = 'block';
+      crearHojas();
+      const audio = document.getElementById('musica');
+      audio.volume = 0.6;
+      audio.play();
+    }
+
+    function crearHojas() {
+      const contenedor = document.querySelector('.hojas');
+      const hojas = ['🍂','🍁','🍃'];
+      for (let i = 0; i < 25; i++) {
+        const hoja = document.createElement('span');
+        hoja.textContent = hojas[Math.floor(Math.random() * hojas.length)];
+        hoja.style.left = Math.random() * 100 + 'vw';
+        hoja.style.animationDuration = 5 + Math.random() * 5 + 's';
+        hoja.style.fontSize = 16 + Math.random() * 20 + 'px';
+        contenedor.appendChild(hoja);
+      }
+    }
+  </script>
+</body>
+</html>
